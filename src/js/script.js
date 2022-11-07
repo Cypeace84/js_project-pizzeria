@@ -1,7 +1,9 @@
 /* global Handlebars, utils, dataSource */ // eslint-disable-line no-unused-vars
 
+//const { firebrick } = require('color-name');    - skąd sie to wzięło :) ?????
+
 {
-  'use strict';
+  ('use strict');
 
   const select = {
     templateOf: {
@@ -45,21 +47,70 @@
       defaultValue: 1,
       defaultMin: 1,
       defaultMax: 9,
-    }
+    },
   };
 
   const templates = {
-    menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
+    menuProduct: Handlebars.compile(
+      document.querySelector(select.templateOf.menuProduct).innerHTML
+    ),
   };
 
+  class Product {
+    constructor(id, data) {
+      const thisProduct = this;
+      thisProduct.id = id;
+      thisProduct.data = data;
+
+      thisProduct.renederInMenu();
+      console.log('new Product:', thisProduct);
+    }
+
+    renederInMenu() {
+      const thisProduct = this;
+
+      /* generate HTML Based on Template */
+      const generateHTML = templates.menuProduct(thisProduct.data);
+      // console.log('genetarteHTML', generateHTML);
+
+      /* create element using utils.createElementFromHtml */
+      thisProduct.element = utils.createDOMFromHTML(generateHTML);
+      //Zauważ, że stworzony element DOM zapisujemy od razu jako właściwość naszej
+      //instancji. To dobra praktyka. Dzięki temu będziemy mieli do
+      // niego dostęp również w innych metodach instancji. Nie tylko w renderInMenu.
+      // ?????????????? //
+
+      /* find menu container */
+      const menuContainer = document.querySelector(select.containerOf.menu);
+
+      /* add element to menu */
+      menuContainer.appendChild(thisProduct.element);
+    }
+  }
+
   const app = {
-    init: function(){
+    initData: function () {
+      const thisApp = this;
+      thisApp.data = dataSource;
+    },
+    initMenu: function () {
+      const thisApp = this;
+      console.log('thisApp.data:', thisApp.data);
+
+      for (let productData in thisApp.data.products) {
+        new Product(productData, thisApp.data.products[productData]);
+      }
+    },
+    init: function () {
       const thisApp = this;
       console.log('*** App starting ***');
       console.log('thisApp:', thisApp);
       console.log('classNames:', classNames);
       console.log('settings:', settings);
       console.log('templates:', templates);
+
+      thisApp.initData();
+      thisApp.initMenu();
     },
   };
 
