@@ -64,6 +64,7 @@
 
       thisProduct.renederInMenu();
       console.log('new Product:', thisProduct);
+      thisProduct.getElements();
       thisProduct.initAccordion();
     }
     getElements() {
@@ -116,14 +117,14 @@
       const thisProduct = this;
 
       /* find the clickable trigger (the element that should react to clicking) */
-      //const clickableTrigger = thisProduct.element;
-      const clickableTrigger = thisProduct.element.querySelector(
-        select.menuProduct.clickable
-      );
+
+      // const clickableTrigger = thisProduct.element.querySelector( ///zastąpione przez thisProduct.accordingTrigger///
+      //   select.menuProduct.clickable
+      // );
 
       /* START: add event listener to clickable trigger on event click */
 
-      clickableTrigger.addEventListener('click', function (event) {
+      thisProduct.accordionTrigger.addEventListener('click', function (event) {
         /* prevent default action for event */
         event.preventDefault();
 
@@ -134,7 +135,7 @@
 
         if (activeProduct != null && activeProduct != thisProduct.element) {
           activeProduct.classList.toggle(classNames.menuProduct.wrapperActive);
-          console.log('activeProduct:', activeProduct);
+          // console.log('activeProduct:', activeProduct);
         }
 
         /* toggle active class on thisProduct.element */
@@ -142,10 +143,10 @@
           classNames.menuProduct.wrapperActive
         );
 
-        console.log('thisProductElement', thisProduct.element);
-        console.log('thisProduct:', thisProduct);
+        // console.log('thisProductElement', thisProduct.element);
+        // console.log('thisProduct:', thisProduct);
 
-        console.log('clicableTrigger:', clickableTrigger);
+        // console.log('clicableTrigger:', clickableTrigger);
       });
     }
   }
