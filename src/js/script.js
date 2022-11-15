@@ -196,8 +196,18 @@
           // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
           const option = param.options[optionId];
           console.log(optionId, option);
+
+          const optionImage = thisProduct.imageWrapper.querySelector(
+            '.' + paramId + '-' + optionId
+          );
+          if (optionImage) {
+            console.log('mam zdjecie');
+          }
           // check if there is param with a name of paramId in formData and if it includes optionId
-          if (formData[paramId] && formData[paramId].includes(optionId)) {
+          const optionSelected =
+            formData[paramId] && formData[paramId].includes(optionId);
+
+          if (optionSelected) {
             // check if the option is not default
             if (!option.default) {
               // add option price to price variable
@@ -208,6 +218,12 @@
             if (option.default) {
               // reduce price variable
               price -= option.price;
+            }
+          }
+          if (optionImage) {
+            optionImage.classList.remove(classNames.menuProduct.imageVisible);
+            if (optionSelected) {
+              optionImage.classList.add(classNames.menuProduct.imageVisible);
             }
           }
         }
