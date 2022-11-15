@@ -95,6 +95,11 @@
         select.menuProduct.priceElem
       );
       console.log('thisProduct.priceElem', thisProduct.priceElem);
+
+      thisProduct.imageWrapper = thisProduct.element.querySelector(
+        select.menuProduct.imageWrapper
+      );
+      console.log('thisProduct.imageWrapper', thisProduct.imageWrapper);
     }
 
     renederInMenu() {
@@ -106,7 +111,7 @@
 
       /* create element using utils.createElementFromHtml */
       thisProduct.element = utils.createDOMFromHTML(generateHTML);
-      
+
       /* find menu container */
       const menuContainer = document.querySelector(select.containerOf.menu);
 
@@ -207,7 +212,7 @@
           }
         }
       }
-   
+
       // update calculated price in the HTML
       thisProduct.priceElem.innerHTML = price;
     }
