@@ -106,11 +106,7 @@
 
       /* create element using utils.createElementFromHtml */
       thisProduct.element = utils.createDOMFromHTML(generateHTML);
-      //Zauważ, że stworzony element DOM zapisujemy od razu jako właściwość naszej
-      //instancji. To dobra praktyka. Dzięki temu będziemy mieli do
-      // niego dostęp również w innych metodach instancji. Nie tylko w renderInMenu.
-      // ?????????????? //
-
+      
       /* find menu container */
       const menuContainer = document.querySelector(select.containerOf.menu);
 
@@ -204,16 +200,14 @@
             }
           } else {
             // check if the option is default
-            if (!option.default) {
-              price == price;
-            } else {
+            if (option.default) {
               // reduce price variable
               price -= option.price;
             }
           }
         }
       }
-
+   
       // update calculated price in the HTML
       thisProduct.priceElem.innerHTML = price;
     }
