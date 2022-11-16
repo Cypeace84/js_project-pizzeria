@@ -44,7 +44,7 @@
 
   const settings = {
     amountWidget: {
-      defaultValue: 1,
+      defaultValue: 0,
       defaultMin: 1,
       defaultMax: 9,
     },
@@ -259,6 +259,8 @@
       console.log('amountWidget:', thisWidget);
       console.log('constrctor argument:', element);
 
+      thisWidget.value = settings.amountWidget.defaultValue;
+
       thisWidget.getElements(element);
       thisWidget.setValue(thisWidget.input.value);
       thisWidget.initActions();
@@ -309,6 +311,7 @@
       });
     }
     annonce() {
+      //custom event
       const thisWidget = this;
 
       const event = new Event('updated');
