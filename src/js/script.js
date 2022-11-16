@@ -257,6 +257,7 @@
 
       thisWidget.getElements(element);
       thisWidget.setValue(thisWidget.input.value);
+      thisWidget.initActions();
     }
     getElements(element) {
       const thisWidget = this;
@@ -281,8 +282,21 @@
         thisWidget.value = newValue;
       }
 
-      thisWidget.value = newValue;
+      //thisWidget.value = newValue;
       thisWidget.input.value = thisWidget.value; //thisWidget.input.value = newValue??? po co te 2 linie kodu?
+    }
+    initActions() {
+      const thisWidget = this;
+
+      thisWidget.input.addEventListener('change', function () {
+        thisWidget.setValue(thisWidget.input.value);
+      });
+      thisWidget.linkDecrease.addEventListener('click', function () {
+        thisWidget.setValue(thisWidget.value - 1); // czemu nie thisWidget.input.value??
+      });
+      thisWidget.linkIncrease.addEventListener('click', function () {
+        thisWidget.setValue(thisWidget.value + 1);
+      });
     }
   }
 
