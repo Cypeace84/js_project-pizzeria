@@ -220,10 +220,15 @@
               price -= option.price;
             }
           }
+          // all images
           if (optionImage) {
-            optionImage.classList.remove(classNames.menuProduct.imageVisible);
+            //add class active to selected img
             if (optionSelected) {
               optionImage.classList.add(classNames.menuProduct.imageVisible);
+            }
+            //remove class active from other img
+            else {
+              optionImage.classList.remove(classNames.menuProduct.imageVisible);
             }
           }
         }
