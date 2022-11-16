@@ -239,13 +239,17 @@
           }
         }
       }
-
+      /* multiply price by amont */
+      price *= thisProduct.amountWidget.value;
       // update calculated price in the HTML
       thisProduct.priceElem.innerHTML = price;
     }
     initAmountWidget() {
       const thisProduct = this;
-      thisProduct.AmountWidget = new AmountWidget(thisProduct.amountWidgetElem);
+      thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
+      thisProduct.amountWidgetElem.addEventListener('updated', function () {
+        thisProduct.processOrder();
+      });
     }
   }
   class AmountWidget {
@@ -285,6 +289,7 @@
         newValue <= settings.amountWidget.defaultMax + 1
       ) {
         thisWidget.value = newValue;
+        this.annonce();
       }
 
       //thisWidget.value = newValue;
@@ -302,6 +307,12 @@
       thisWidget.linkIncrease.addEventListener('click', function () {
         thisWidget.setValue(thisWidget.value + 1);
       });
+    }
+    annonce() {
+      const thisWidget = this;
+
+      const event = new Event('updated');
+      thisWidget.element.dispatchEvent(event);
     }
   }
 
