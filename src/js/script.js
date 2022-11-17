@@ -68,7 +68,7 @@
 
   const settings = {
     amountWidget: {
-      defaultValue: 0,
+      defaultValue: 1,
       defaultMin: 1,
       defaultMax: 9,
     },
@@ -348,6 +348,20 @@
       thisWidget.element.dispatchEvent(event);
     }
   }
+  class Cart {
+    constructor(element) {
+      const thisCart = this;
+
+      thisCart.products = []; // skąd się wzieło products? skad on wie itp.??
+      thisCart.getElements(element);
+      console.log('new cart', thisCart);
+    }
+    getElements(element) {
+      const thisCart = this;
+      thisCart.dom = {};
+      thisCart.dom.wrapper = element;
+    }
+  }
 
   const app = {
     initData: function () {
@@ -361,6 +375,11 @@
       for (let productData in thisApp.data.products) {
         new Product(productData, thisApp.data.products[productData]);
       }
+    },
+    initCart: function () {
+      const thisApp = this;
+      const cartElem = document.querySelector(select.containerOf.cart);
+      thisApp.cart = new Cart(cartElem);
     },
     init: function () {
       const thisApp = this;
@@ -377,3 +396,8 @@
 
   app.init();
 }
+
+/*Ćwiczenie
+Spróbuj wprowadzić ten sam pomysł w klasie Product. Tak, 
+żeby wszystkie referencje do elementów DOM były "schowane" w 
+dodatkowym obiekcie thisProduct.dom. (9.3) */
