@@ -355,11 +355,22 @@
       thisCart.products = []; // skąd się wzieło products? skad on wie itp.??
       thisCart.getElements(element);
       console.log('new cart', thisCart);
+      thisCart.initActions();
     }
     getElements(element) {
       const thisCart = this;
       thisCart.dom = {};
       thisCart.dom.wrapper = element;
+
+      thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(
+        select.cart.toggleTrigger
+      );
+    }
+    initActions() {
+      const thisCart = this;
+      thisCart.dom.toggleTrigger.addEventListener('click', function () {
+        thisCart.dom.wrapper.classList.toggle('active');
+      });
     }
   }
 
@@ -391,6 +402,7 @@
 
       thisApp.initData();
       thisApp.initMenu();
+      thisApp.initCart();
     },
   };
 
