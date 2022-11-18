@@ -270,6 +270,7 @@
           }
         }
       }
+      thisProduct.priceSingle = price;
       /* multiply price by amont */
       price *= thisProduct.amountWidget.value;
       // update calculated price in the HTML
@@ -284,7 +285,19 @@
     }
     addToCart() {
       const thisProduct = this;
-      app.cart.add(thisProduct);
+      app.cart.add(thisProduct.prepareCartProduct(thisProduct));
+    }
+    prepareCartProduct() {
+      const thisProduct = this;
+      const productSummary = {
+        id: thisProduct.id,
+        name: thisProduct.data.name,
+        amount: thisProduct.amountWidget.value,
+        priceSingle: thisProduct.priceSingle,
+        price: thisProduct.priceSingle * thisProduct.amountWidget.value,
+        params: {},
+      };
+      return productSummary;
     }
   }
   class AmountWidget {
