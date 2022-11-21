@@ -437,6 +437,42 @@
       const generateDom = utils.createDOMFromHTML(generateHTML);
 
       thisCart.dom.productList.appendChild(generateDom);
+
+      thisCart.products.push(menuProduct);
+      console.log('thisCart.products:', thisCart.products);
+    }
+  }
+  class CartProduct {
+    constructor(menuProduct, element) {
+      const thisCartProduct = this;
+      //thisCartProduct.initActions();
+      thisCartProduct.getElements(element);
+      console.log('thisCartProduct:', thisCartProduct);
+
+      thisCartProduct.amount = menuProduct.amount;
+      thisCartProduct.id = menuProduct.id;
+      thisCartProduct.name = menuProduct.name;
+      thisCartProduct.params = menuProduct.params;
+      thisCartProduct.price = menuProduct.price;
+      thisCartProduct.priceSingle = menuProduct.priceSingle;
+    }
+    getElements(element) {
+      const thisCartProduct = this;
+      thisCartProduct.dom = {};
+      thisCartProduct.dom.wrapper = element;
+      thisCartProduct.dom.amountWidget =
+        thisCartProduct.dom.wrapper.querySelector(
+          select.cartProduct.amountWidget
+        );
+      thisCartProduct.dom.price = thisCartProduct.dom.wrapper.querySelector(
+        select.cartProduct.price
+      );
+      thisCartProduct.dom.edit = thisCartProduct.dom.wrapper.querySelector(
+        select.cartProduct.edit
+      );
+      thisCartProduct.dom.remove = thisCartProduct.dom.wrapper.querySelector(
+        select.cartProduct.remove
+      );
     }
   }
 
@@ -458,6 +494,14 @@
       const cartElem = document.querySelector(select.containerOf.cart);
       thisApp.cart = new Cart(cartElem);
     },
+    // initCartProduct: function () {
+    //   const thisApp = this;
+
+    //   thisApp.CartProduct = new CartProduct(
+    //     thisCartProduct,
+    //     thisCartProduct.dom
+    //   );
+    // },
     init: function () {
       const thisApp = this;
       console.log('*** App starting ***');
@@ -479,3 +523,11 @@
 Spróbuj wprowadzić ten sam pomysł w klasie Product. Tak, 
 żeby wszystkie referencje do elementów DOM były "schowane" w 
 dodatkowym obiekcie thisProduct.dom. (9.3) */
+
+/* (302)  prepareCartProductParams
+ params[paramId] = {
+          label: param.label,
+          options: {},
+        };
+czemuu params[x] ??? -> objekty[objekt x ??]
+*/
