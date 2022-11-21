@@ -477,15 +477,18 @@
     }
     initAmountWidget() {
       const thisCartProduct = this;
-      thisCartProduct.dom.amountWidget = new AmountWidget(
-        thisCartProduct.dom.amountWidgetElem
+      thisCartProduct.amountWidget = new AmountWidget(
+        thisCartProduct.dom.amountWidget
       );
-      thisCartProduct.dom.amountWidgetElem.addEventListener(
-        'updated',
-        function () {
-          console.log('amountWidgetElem:', thisCartProduct.amountWidgetElem);
-        }
-      );
+      thisCartProduct.dom.amountWidget.addEventListener('updated', function () {
+        console.log(
+          'thisCartProduct.amountWidget:',
+          thisCartProduct.dom.amountWidget
+        );
+        thisCartProduct.price =
+          thisCartProduct.priceSingle * thisCartProduct.amountWidget.value;
+        thisCartProduct.dom.price.innerHTML = thisCartProduct.price;
+      });
     }
   }
 
