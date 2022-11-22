@@ -442,6 +442,9 @@
       thisCart.dom.productList.addEventListener('updated', function () {
         thisCart.update();
       });
+      thisCart.dom.productList.addEventListener('remove', function () {
+        thisCart.remove(event.detail.cartProduct); ///???thisCartProduct??????????????????????????????
+      });
     }
     add(menuProduct) {
       const thisCart = this;
@@ -472,11 +475,20 @@
       }
       thisCart.totalPrice = deliveryFee + subtotalPrice;
 
-      thisCart.dom.totalPrice[0].innerHTML = thisCart.totalPrice;
-      thisCart.dom.totalPrice[1].innerHTML = thisCart.totalPrice;
+      for (let TotalPriceInDom of thisCart.dom.totalPrice) {
+        TotalPriceInDom.innerHTML = thisCart.totalPrice;
+      }
       thisCart.dom.totalNumber.innerHTML = totalNumber;
       thisCart.dom.subtotalPrice.innerHTML = subtotalPrice;
       thisCart.dom.deliveryFee.innerHTML = deliveryFee;
+    }
+    remove() {
+      const thisCart = this;
+      const cartsToRemove = document.querySelector(select.cart.productList);
+      console.log('cartToRemove', cartsToRemove);
+      thisCart.cartsToRemove.remove();
+
+      this.update();
     }
   }
   class CartProduct {
@@ -486,6 +498,7 @@
       thisCartProduct.getElements(element);
       console.log('thisCartProduct:', thisCartProduct);
       thisCartProduct.initAmountWidget();
+      thisCartProduct.initActions();
 
       thisCartProduct.amount = menuProduct.amount;
       thisCartProduct.id = menuProduct.id;
@@ -526,6 +539,29 @@
         thisCartProduct.price =
           thisCartProduct.priceSingle * thisCartProduct.amountWidget.value;
         thisCartProduct.dom.price.innerHTML = thisCartProduct.price;
+      });
+    }
+    remove() {
+      const thisCartProduct = this;
+
+      const event = new CustomEvent('remove', {
+        bubbles: true,
+        detail: {
+          cartProduct: thisCartProduct,
+        },
+      });
+      thisCartProduct.dom.wrapper.dispatchEvent(event);
+      console.log('remove:', thisCartProduct.remove);
+    }
+    initActions() {
+      const thisCartProduct = this;
+
+      thisCartProduct.dom.edit.addEventListener('click', function (event) {
+        event.preventDefault();
+      });
+      thisCartProduct.dom.remove.addEventListener('click', function (event) {
+        event.preventDefault();
+        thisCartProduct.remove();
       });
     }
   }
@@ -578,3 +614,6 @@ dodatkowym obiekcie thisProduct.dom. (9.3) */
         };
 czemuu params[x] ??? -> objekty[objekt x ??]
 */
+
+//!!!!!!!!!!!!!!!!!!!!
+/* event - customEvent - dispatchEvent(jak działa?)- (400); potem uwamy addeventlistenner(event - czy to ten nasz customowy?)*/
