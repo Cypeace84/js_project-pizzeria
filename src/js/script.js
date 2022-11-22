@@ -397,7 +397,7 @@
       //custom event
       const thisWidget = this;
 
-      const event = new Event('updated');
+      const event = new CustomEvent('updated', { bubbles: true });
       thisWidget.element.dispatchEvent(event);
     }
   }
@@ -427,7 +427,7 @@
       thisCart.dom.subtotalPrice = thisCart.dom.wrapper.querySelector(
         select.cart.subtotalPrice
       );
-      thisCart.dom.totalPrice = thisCart.dom.wrapper.querySelector(
+      thisCart.dom.totalPrice = thisCart.dom.wrapper.querySelectorAll(
         select.cart.totalPrice
       );
       thisCart.dom.totalNumber = thisCart.dom.wrapper.querySelector(
@@ -438,6 +438,9 @@
       const thisCart = this;
       thisCart.dom.toggleTrigger.addEventListener('click', function () {
         thisCart.dom.wrapper.classList.toggle('active');
+      });
+      thisCart.dom.productList.addEventListener('updated', function () {
+        thisCart.update();
       });
     }
     add(menuProduct) {
@@ -469,7 +472,8 @@
       }
       thisCart.totalPrice = deliveryFee + subtotalPrice;
 
-      thisCart.dom.totalPrice.innerHTML = thisCart.totalPrice;
+      thisCart.dom.totalPrice[0].innerHTML = thisCart.totalPrice;
+      thisCart.dom.totalPrice[1].innerHTML = thisCart.totalPrice;
       thisCart.dom.totalNumber.innerHTML = totalNumber;
       thisCart.dom.subtotalPrice.innerHTML = subtotalPrice;
       thisCart.dom.deliveryFee.innerHTML = deliveryFee;
@@ -478,7 +482,7 @@
   class CartProduct {
     constructor(menuProduct, element) {
       const thisCartProduct = this;
-      //thisCartProduct.initActions();
+
       thisCartProduct.getElements(element);
       console.log('thisCartProduct:', thisCartProduct);
       thisCartProduct.initAmountWidget();
