@@ -1,5 +1,5 @@
-import { settings, select, templates } from './settings.js';
-import CartProduct from './components/CartProduct.js';
+import { settings, select, templates } from '../settings.js';
+import CartProduct from '../components/CartProduct.js';
 import utils from '../utils.js';
 
 class Cart {

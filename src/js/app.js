@@ -40,6 +40,14 @@ const app = {
     const thisApp = this;
     const cartElem = document.querySelector(select.containerOf.cart);
     thisApp.cart = new Cart(cartElem);
+
+    thisApp.productList = document.querySelector(select.containerOf.menu);
+
+    thisApp.productList.addEventListener('add-to-cart', function (event) {
+      app.cart.add(
+        event.detail.Product.prepareCartProduct(event.detail.Product)
+      );
+    });
   },
 
   init: function () {
@@ -57,6 +65,8 @@ const app = {
 };
 
 app.init();
+
+export default app;
 
 /*Ćwiczenie
 Spróbuj wprowadzić ten sam pomysł w klasie Product. Tak, 
