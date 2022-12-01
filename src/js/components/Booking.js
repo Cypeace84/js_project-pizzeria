@@ -10,11 +10,11 @@ class Booking {
     thisBooking.initWidgets();
   }
 
-  render(element) {
+  render() {
     const thisBooking = this;
-    thisBooking.element = element;
 
     const generateHTML = templates.bookingWidget();
+
     thisBooking.dom = {};
     thisBooking.dom.wrapper = thisBooking.element;
 
