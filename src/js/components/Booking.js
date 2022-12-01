@@ -12,6 +12,7 @@ class Booking {
 
   render(element) {
     const thisBooking = this;
+    thisBooking.element = element;
 
     const generateHTML = templates.bookingWidget();
     thisBooking.dom = {};
