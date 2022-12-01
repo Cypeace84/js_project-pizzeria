@@ -5,19 +5,30 @@ class BaseWidget {
     thisWidget.dom = {};
     thisWidget.dom.wrapper = wrapperElement;
 
-    thisWidget.value = initialValue;
+    thisWidget.correctValue = initialValue;
+  }
+
+  get value() {
+    const thisWidget = this;
+
+    return thisWidget.correctValue;
+  }
+
+  set value(value) {
+    const thisWidget = this;
+    const newValue = thisWidget.parseValue(value);
+
+    if (newValue != thisWidget.correctValue && thisWidget.isValid(newValue)) {
+      thisWidget.correctValue = newValue;
+      thisWidget.annonce();
+    }
+
+    thisWidget.renderValue();
   }
 
   setValue(value) {
     const thisWidget = this;
-    const newValue = parseValue(value);
-
-    if (thisWidget.value !== newValue && thisWidget.isValid(newValue)) {
-      thisWidget.value = newValue;
-      this.annonce();
-    }
-
-    thisWidget.renderValue();
+    thisWidget.value = value;
   }
 
   parseValue(value) {
