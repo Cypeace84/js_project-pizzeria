@@ -190,6 +190,12 @@
     }
   }
 
+  .selected {
+    color: rgb(149, 231, 149);
+    border: 1px;
+    border-radius: 5px;
+  }
+
   [data-table='1'] {
     left: 40px;
     top: 40px;
@@ -208,6 +214,8 @@
     top: 180px;
   }
 }
+
+
 
 .booking-options {
   @include flex(row, flex-start, space-between);
