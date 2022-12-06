@@ -8,6 +8,8 @@ class Booking {
   constructor(element) {
     const thisBooking = this;
 
+    thisBooking.selectedTable = null;
+
     thisBooking.element = element;
     thisBooking.render();
     thisBooking.initWidgets();
@@ -169,6 +171,37 @@ class Booking {
         table.classList.remove(classNames.booking.tableBooked);
       }
     }
+
+    for (let table of thisBooking.dom.tables) {
+      table.classList.remove(classNames.booking.selected);
+    }
+    thisBooking.selectedTable = null;
+    console.log('selectedTable', thisBooking.selectedTable);
+  }
+
+  initTables(event) {
+    const thisBooking = this;
+    console.log(event.target);
+    const clickedElement = event.target;
+
+    if (clickedElement.classList.contains(classNames.booking.table)) {
+      if (clickedElement.classList.contains(classNames.booking.tableBooked)) {
+        alert('this table is already booked !!!');
+      } else {
+        if (clickedElement.classList.contains(classNames.booking.selected)) {
+          clickedElement.classList.remove(classNames.booking.selected);
+          thisBooking.selectedTable = null;
+        } else {
+          for (let table of thisBooking.dom.tables) {
+            table.classList.remove(classNames.booking.selected);
+          }
+          clickedElement.classList.add(classNames.booking.selected);
+          const clickedTableNr = clickedElement.getAttribute('data-table');
+          thisBooking.selectedTable = clickedTableNr;
+        }
+      }
+      console.log(thisBooking.selectedTable);
+    }
   }
 
   render() {
@@ -201,6 +234,10 @@ class Booking {
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(
       select.booking.tables
     );
+    //////////////////////////////////
+    thisBooking.dom.selectedTables = document.querySelector(
+      select.booking.allTables
+    );
   }
   initWidgets() {
     const thisBooking = this;
@@ -215,6 +252,10 @@ class Booking {
 
     thisBooking.dom.wrapper.addEventListener('updated', function () {
       thisBooking.updateDOM();
+    });
+    //////////////////////////////////////////////////
+    thisBooking.dom.selectedTables.addEventListener('click', function (event) {
+      thisBooking.initTables(event);
     });
   }
 }
