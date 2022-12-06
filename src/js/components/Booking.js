@@ -143,21 +143,37 @@ class Booking {
   updateDOM() {
     const thisBooking = this;
 
+    if (thisBooking.hour) {
+      const hourChanged = utils.hourToNumber(
+        thisBooking.hourPicker.correctValue
+      );
+      if (
+        thisBooking.hour != hourChanged ||
+        (thisBooking.datePicker.value != thisBooking.date &&
+          thisBooking.selectedTable.nr != null)
+      ) {
+        thisBooking.selectedTable.nr = null;
+        thisBooking.selectedTable.clickedElement.classList.remove(
+          classNames.booking.selected
+        );
+      }
+    }
+
     thisBooking.date = thisBooking.datePicker.value;
     thisBooking.hour = utils.hourToNumber(thisBooking.hourPicker.value);
-    if (
-      thisBooking.selectedTable.nr != null
-      // thisBooking.selectedTable.clickedElement.contains(
-      //   classNames.booking.selected
-      // ) &&
-      //   !thisBooking.date) ||
-      // thisBooking.hour
-    ) {
-      thisBooking.selectedTable.nr = null;
-      thisBooking.selectedTable.clickedElement.classList.remove(
-        classNames.booking.selected
-      );
-    }
+    // if (
+    //   thisBooking.selectedTable.nr != null
+    //   // thisBooking.selectedTable.clickedElement.contains(
+    //   //   classNames.booking.selected
+    //   // ) &&
+    //   //   !thisBooking.date) ||
+    //   // thisBooking.hour
+    // ) {
+    //   thisBooking.selectedTable.nr = null;
+    //   thisBooking.selectedTable.clickedElement.classList.remove(
+    //     classNames.booking.selected
+    //   );
+    // }
 
     let allAvailable = false;
 
