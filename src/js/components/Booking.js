@@ -343,6 +343,10 @@ class Booking {
     thisBooking.dom.starters = thisBooking.dom.wrapper.querySelectorAll(
       select.booking.starters
     );
+
+    thisBooking.dom.bookTable = thisBooking.dom.wrapper.querySelector(
+      select.booking.bookTable
+    );
   }
   initWidgets() {
     const thisBooking = this;
@@ -357,11 +361,15 @@ class Booking {
 
     thisBooking.dom.wrapper.addEventListener('updated', function () {
       thisBooking.updateDOM();
-      thisBooking.sendBooking();
     });
     //////////////////////////////////////////////////
     thisBooking.dom.selectedTables.addEventListener('click', function (event) {
       thisBooking.initTables(event);
+    });
+
+    thisBooking.dom.bookTable.addEventListener('click', function (event) {
+      event.preventDefault();
+      thisBooking.sendBooking();
     });
   }
 }

@@ -50,6 +50,7 @@ export const select = {
     people: '[name="people"]',
     hours: '[name="hours"]',
     starters: '[name="starter"]',
+    bookTable: '.btn-secondary',
   },
   nav: {
     links: '.main-nav a',
