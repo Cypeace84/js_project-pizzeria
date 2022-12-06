@@ -8,7 +8,7 @@ class Booking {
   constructor(element) {
     const thisBooking = this;
 
-    thisBooking.selectedTable = null;
+    thisBooking.selectedTable = {};
 
     thisBooking.element = element;
     thisBooking.render();
@@ -145,6 +145,19 @@ class Booking {
 
     thisBooking.date = thisBooking.datePicker.value;
     thisBooking.hour = utils.hourToNumber(thisBooking.hourPicker.value);
+    if (
+      thisBooking.selectedTable.nr != null
+      // thisBooking.selectedTable.clickedElement.contains(
+      //   classNames.booking.selected
+      // ) &&
+      //   !thisBooking.date) ||
+      // thisBooking.hour
+    ) {
+      thisBooking.selectedTable.nr = null;
+      thisBooking.selectedTable.clickedElement.classList.remove(
+        classNames.booking.selected
+      );
+    }
 
     let allAvailable = false;
 
@@ -172,32 +185,51 @@ class Booking {
       }
     }
 
-    for (let table of thisBooking.dom.tables) {
-      table.classList.remove(classNames.booking.selected);
-    }
-    thisBooking.selectedTable = null;
-    console.log('selectedTable', thisBooking.selectedTable);
+    //   for (let table of thisBooking.dom.tables) {
+    //     table.classList.remove(classNames.booking.selected);
+    //   }
+    //   thisBooking.selectedTable = null;
+    //   console.log('selectedTable', thisBooking.selectedTable);
   }
 
   initTables(event) {
     const thisBooking = this;
     console.log(event.target);
-    const clickedElement = event.target;
+    thisBooking.selectedTable.clickedElement = event.target;
 
-    if (clickedElement.classList.contains(classNames.booking.table)) {
-      if (clickedElement.classList.contains(classNames.booking.tableBooked)) {
+    if (
+      thisBooking.selectedTable.clickedElement.classList.contains(
+        classNames.booking.table
+      )
+    ) {
+      if (
+        thisBooking.selectedTable.clickedElement.classList.contains(
+          classNames.booking.tableBooked
+        )
+      ) {
         alert('this table is already booked !!!');
       } else {
-        if (clickedElement.classList.contains(classNames.booking.selected)) {
-          clickedElement.classList.remove(classNames.booking.selected);
-          thisBooking.selectedTable = null;
+        if (
+          thisBooking.selectedTable.clickedElement.classList.contains(
+            classNames.booking.selected
+          )
+        ) {
+          thisBooking.selectedTable.clickedElement.classList.remove(
+            classNames.booking.selected
+          );
+          thisBooking.selectedTable.nr = null;
         } else {
           for (let table of thisBooking.dom.tables) {
             table.classList.remove(classNames.booking.selected);
           }
-          clickedElement.classList.add(classNames.booking.selected);
-          const clickedTableNr = clickedElement.getAttribute('data-table');
-          thisBooking.selectedTable = clickedTableNr;
+          thisBooking.selectedTable.clickedElement.classList.add(
+            classNames.booking.selected
+          );
+          const clickedTableNr =
+            thisBooking.selectedTable.clickedElement.getAttribute(
+              settings.booking.tableIdAttribute
+            );
+          thisBooking.selectedTable.nr = clickedTableNr;
         }
       }
       console.log(thisBooking.selectedTable);
