@@ -148,9 +148,9 @@ class Booking {
         thisBooking.hourPicker.correctValue
       );
       if (
-        (thisBooking.selectedTable.nr != null &&
-          thisBooking.hour != hourBeforeChanged) ||
-        thisBooking.datePicker.value != thisBooking.date
+        thisBooking.selectedTable.nr != null &&
+        (thisBooking.hour != hourBeforeChanged ||
+          thisBooking.datePicker.value != thisBooking.date)
       ) {
         thisBooking.selectedTable.nr = null;
         thisBooking.selectedTable.clickedElement.classList.remove(
@@ -161,19 +161,6 @@ class Booking {
 
     thisBooking.date = thisBooking.datePicker.value;
     thisBooking.hour = utils.hourToNumber(thisBooking.hourPicker.value);
-    // if (
-    //   thisBooking.selectedTable.nr != null
-    //   // thisBooking.selectedTable.clickedElement.contains(
-    //   //   classNames.booking.selected
-    //   // ) &&
-    //   //   !thisBooking.date) ||
-    //   // thisBooking.hour
-    // ) {
-    //   thisBooking.selectedTable.nr = null;
-    //   thisBooking.selectedTable.clickedElement.classList.remove(
-    //     classNames.booking.selected
-    //   );
-    // }
 
     let allAvailable = false;
 
@@ -200,12 +187,6 @@ class Booking {
         table.classList.remove(classNames.booking.tableBooked);
       }
     }
-
-    //   for (let table of thisBooking.dom.tables) {
-    //     table.classList.remove(classNames.booking.selected);
-    //   }
-    //   thisBooking.selectedTable = null;
-    //   console.log('selectedTable', thisBooking.selectedTable);
   }
 
   initTables(event) {
