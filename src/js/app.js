@@ -143,10 +143,12 @@ const app = {
       console.log(clickedLink.classList);
       if (clickedLink.classList.contains('go_to_order')) {
         thisApp.activatePage('order');
+        window.location.hash = 'order';
       }
 
       if (clickedLink.classList.contains('goToBooking')) {
         thisApp.activatePage('booking');
+        window.location.hash = 'booking';
       }
     });
   },
