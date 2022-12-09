@@ -100,149 +100,7 @@
 
     <div id="pages">
       <section id="home">
-        <div id="home-page" class="home-page container">
-          <article class="row home-nav">
-            <div
-              id="order_online"
-              class="img_link go_to_order col-sm-12 col-md-6"
-            >
-              <img
-                class="link go_to_order"
-                src="images/jpg/pizza-1.jpg"
-                alt="pizza"
-              />
-              <div class="go_to_order">
-                <h2 class="go_to_order">ORDER ONLINE</h2>
-              </div>
-            </div>
-            <div id="book_a_table" class="img_link col-sm-12 col-md-6">
-              <img
-                class="link goToBooking"
-                src="images/jpg/pizza-2.jpg"
-                alt="table with food"
-              />
-              <div class="goToBooking">
-                <h2 class="goToBooking">BOOK A TABLE</h2>
-              </div>
-            </div>
-            <div class="opening_hours col-md-12">
-              <div>
-                <h2>OPENING HOURS:</h2>
-                <p>TUE-SUN, 12PM - 12AM</p>
-              </div>
-            </div>
-          </article>
-          <article class="my_carousel">
-            <div
-              class="carousel"
-              data-flickity='{ "autoPlay": 3000, "pauseAutoPlayOnHover": true}'
-            >
-              <div class="carousel-cell">
-                <!-- <img class="carousel-cell-image" data-flickity-lazyload="images/jpg/pizza-3.jpg" alt="" /> -->
-                <img class="carousel_img" src="images/jpg/pizza-3.jpg" />
-                <div class="carousel_txt">
-                  <h3>AMAZING SERVICE!</h3>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab
-                    neque ratione harum necessitatibus iure omnis in nihil
-                    reprehenderit iste ducimus asperiores ipsa quam, autem
-                    accusamus atque sapiente veniam tempora illo?
-                  </p>
-                  <h4>- Margaret Osborne</h4>
-                </div>
-              </div>
-              <div class="carousel-cell">
-                <!-- <img class="carousel-cell-image" data-flickity-lazyload="images/jpg/pizza-3.jpg" alt="" /> -->
-                <img class="carousel_img" src="images/jpg/pizza-3.jpg" />
-                <div class="carousel_txt">
-                  <h3>AMAZING SERVICE!</h3>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab
-                    neque ratione harum necessitatibus iure omnis in nihil
-                    reprehenderit iste ducimus asperiores ipsa quam, autem
-                    accusamus atque sapiente veniam tempora illo?
-                  </p>
-                  <h4>- Margaret Osborne</h4>
-                </div>
-              </div>
-              <div class="carousel-cell">
-                <!-- <img class="carousel-cell-image" data-flickity-lazyload="images/jpg/pizza-3.jpg" alt="" /> -->
-                <img class="carousel_img" src="images/jpg/pizza-3.jpg" />
-                <div class="carousel_txt">
-                  <h3>AMAZING SERVICE!</h3>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab
-                    neque ratione harum necessitatibus iure omnis in nihil
-                    reprehenderit iste ducimus asperiores ipsa quam, autem
-                    accusamus atque sapiente veniam tempora illo?
-                  </p>
-                  <h4>- Margaret Osborne</h4>
-                </div>
-              </div>
-            </div>
-          </article>
-          <article id="gallery" class="row">
-            <div class="img_wrap col-md-4">
-              <img src="images/jpg/pizza-4.jpg" alt="#" />
-              <div class="fa heart">
-                <i class="fa-solid fa-heart"></i>
-              </div>
-              <div class="fa share">
-                <span class="material-symbols-outlined"> share </span>
-              </div>
-            </div>
-            <div class="img_wrap col-md-4">
-              <img src="images/jpg/pizza-5.jpg" alt="#" />
-              <div class="fa heart">
-                <i class="fa-solid fa-heart"></i>
-              </div>
-              <div class="fa share">
-                <span class="material-symbols-outlined"> share </span>
-              </div>
-            </div>
-            <div class="img_wrap col-md-4">
-              <img src="images/jpg/pizza-6.jpg" alt="#" />
-              <div class="fa heart">
-                <i class="fa-solid fa-heart"></i>
-              </div>
-              <div class="fa share">
-                <span class="material-symbols-outlined"> share </span>
-              </div>
-            </div>
-            <div class="img_wrap col-md-4">
-              <img src="images/jpg/pizza-7.jpg" alt="#" />
-              <div class="fa heart">
-                <i class="fa-solid fa-heart"></i>
-              </div>
-              <div class="fa share">
-                <span class="material-symbols-outlined"> share </span>
-              </div>
-            </div>
-            <div class="img_wrap col-md-4">
-              <img src="images/jpg/pizza-8.jpg" alt="#" />
-              <div class="fa heart">
-                <i class="fa-solid fa-heart"></i>
-              </div>
-              <div class="fa share">
-                <span class="material-symbols-outlined"> share </span>
-              </div>
-            </div>
-            <div class="img_wrap col-md-4">
-              <img src="images/jpg/pizza-9.jpg" alt="#" />
-              <div class="fa heart">
-                <i class="fa-solid fa-heart"></i>
-              </div>
-              <div class="fa share">
-                <span class="material-symbols-outlined"> share </span>
-              </div>
-            </div>
-          </article>
-          <footer>
-            <div>
-              <a href="#">View more on Instagram</a>
-            </div>
-          </footer>
-        </div>
+        <div id="home-page" class="home-page container"></div>
       </section>
 
       <section id="order">
@@ -252,6 +110,147 @@
         <div class="booking-wrapper container"></div>
       </section>
     </div>
+
+    <script id="template-home-page" type="text/x-handlebars-template">
+      <article class='row home-nav'>
+        <div id='order_online' class='img_link go_to_order col-sm-12 col-md-6'>
+          <img
+            class='link go_to_order'
+            src='images/jpg/pizza-1.jpg'
+            alt='pizza'
+          />
+          <div class='go_to_order'>
+            <h2 class='go_to_order'>ORDER ONLINE</h2>
+          </div>
+        </div>
+        <div id='book_a_table' class='img_link col-sm-12 col-md-6'>
+          <img
+            class='link goToBooking'
+            src='images/jpg/pizza-2.jpg'
+            alt='table with food'
+          />
+          <div class='goToBooking'>
+            <h2 class='goToBooking'>BOOK A TABLE</h2>
+          </div>
+        </div>
+        <div class='opening_hours col-md-12'>
+          <div>
+            <h2>OPENING HOURS:</h2>
+            <p>TUE-SUN, 12PM - 12AM</p>
+          </div>
+        </div>
+      </article>
+      <article class='my_carousel'>
+        <div
+          class='carousel'
+          data-flickity='{ "autoPlay": 3000, "pauseAutoPlayOnHover": true}'
+        >
+          <div class='carousel-cell'>
+            <!-- <img class="carousel-cell-image" data-flickity-lazyload="images/jpg/pizza-3.jpg" alt="" /> -->
+            <img class='carousel_img' src='images/jpg/pizza-3.jpg' />
+            <div class='carousel_txt'>
+              <h3>AMAZING SERVICE!</h3>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab
+                neque ratione harum necessitatibus iure omnis in nihil
+                reprehenderit iste ducimus asperiores ipsa quam, autem accusamus
+                atque sapiente veniam tempora illo?
+              </p>
+              <h4>- Margaret Osborne</h4>
+            </div>
+          </div>
+          <div class='carousel-cell'>
+            <!-- <img class="carousel-cell-image" data-flickity-lazyload="images/jpg/pizza-3.jpg" alt="" /> -->
+            <img class='carousel_img' src='images/jpg/pizza-3.jpg' />
+            <div class='carousel_txt'>
+              <h3>AMAZING SERVICE!</h3>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab
+                neque ratione harum necessitatibus iure omnis in nihil
+                reprehenderit iste ducimus asperiores ipsa quam, autem accusamus
+                atque sapiente veniam tempora illo?
+              </p>
+              <h4>- Margaret Osborne</h4>
+            </div>
+          </div>
+          <div class='carousel-cell'>
+            <!-- <img class="carousel-cell-image" data-flickity-lazyload="images/jpg/pizza-3.jpg" alt="" /> -->
+            <img class='carousel_img' src='images/jpg/pizza-3.jpg' />
+            <div class='carousel_txt'>
+              <h3>AMAZING SERVICE!</h3>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab
+                neque ratione harum necessitatibus iure omnis in nihil
+                reprehenderit iste ducimus asperiores ipsa quam, autem accusamus
+                atque sapiente veniam tempora illo?
+              </p>
+              <h4>- Margaret Osborne</h4>
+            </div>
+          </div>
+        </div>
+      </article>
+      <article id='gallery' class='row'>
+        <div class='img_wrap col-md-4'>
+          <img src='images/jpg/pizza-4.jpg' alt='#' />
+          <div class='fa heart'>
+            <i class='fa-solid fa-heart'></i>
+          </div>
+          <div class='fa share'>
+            <span class='material-symbols-outlined'> share </span>
+          </div>
+        </div>
+        <div class='img_wrap col-md-4'>
+          <img src='images/jpg/pizza-5.jpg' alt='#' />
+          <div class='fa heart'>
+            <i class='fa-solid fa-heart'></i>
+          </div>
+          <div class='fa share'>
+            <span class='material-symbols-outlined'> share </span>
+          </div>
+        </div>
+        <div class='img_wrap col-md-4'>
+          <img src='images/jpg/pizza-6.jpg' alt='#' />
+          <div class='fa heart'>
+            <i class='fa-solid fa-heart'></i>
+          </div>
+          <div class='fa share'>
+            <span class='material-symbols-outlined'> share </span>
+          </div>
+        </div>
+        <div class='img_wrap col-md-4'>
+          <img src='images/jpg/pizza-7.jpg' alt='#' />
+          <div class='fa heart'>
+            <i class='fa-solid fa-heart'></i>
+          </div>
+          <div class='fa share'>
+            <span class='material-symbols-outlined'> share </span>
+          </div>
+        </div>
+        <div class='img_wrap col-md-4'>
+          <img src='images/jpg/pizza-8.jpg' alt='#' />
+          <div class='fa heart'>
+            <i class='fa-solid fa-heart'></i>
+          </div>
+          <div class='fa share'>
+            <span class='material-symbols-outlined'> share </span>
+          </div>
+        </div>
+        <div class='img_wrap col-md-4'>
+          <img src='images/jpg/pizza-9.jpg' alt='#' />
+          <div class='fa heart'>
+            <i class='fa-solid fa-heart'></i>
+          </div>
+          <div class='fa share'>
+            <span class='material-symbols-outlined'> share </span>
+          </div>
+        </div>
+      </article>
+      <footer>
+        <div>
+          <a href='#'>View more on Instagram</a>
+        </div>
+      </footer>
+    </script>
 
     <script id="template-cart-product" type="text/x-handlebars-template">
       <li>
@@ -452,6 +451,7 @@
         </form>
       </div>
     </script>
+
     <script src="vendor/flickity.pkgd.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
