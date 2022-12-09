@@ -58,7 +58,8 @@
 
 .opening_hours{
   display: flex;
-  border-radius: 3px;  
+  border-radius: 3px ;
+
   align-items: center;
   justify-content: center;
   background: #ff6b6b;
@@ -95,13 +96,15 @@
     h3 {
       font-size: 14px;    
     }
+
     p {
       font-size: 12px;
     }
+
     h4 {
       font-style: italic;
       font-size: 14px;
-      font-weight:bold;
+      font-weight: bold;
     }
   }
 
@@ -112,8 +115,9 @@
     border-radius: 3px;
   }
 }
+
 .flickity-page-dots{
-    left: 0;
+  left: 0;
 }
 /* fade in lazy loaded image */
 .carousel-cell-image.flickity-lazyloaded,
@@ -124,10 +128,10 @@
 #gallery {
   display: flex;
   flex-wrap: wrap;
-  justify-content:space-around;
+  justify-content: space-around;
   box-sizing: border-box;
   height: auto;
-  background-color:#fff;
+  background-color: #fff;
   margin: 0 auto;
   margin-bottom: 0;
   padding-left: 43px;
@@ -138,7 +142,7 @@
     position: relative;
     min-width: 190px;
     height: 210px;
-    padding: 5px;  
+    padding: 5px;
     background-color: #fff;
   }
 
@@ -154,8 +158,9 @@
     object-fit: cover;
     border-radius: 3px;
   }
+
   .img_wrap:hover img{
-    filter:brightness(0.6);
+    filter: brightness(0.6);
     transition: 0.6s;
   }
 
@@ -163,13 +168,13 @@
     width: 40px;
     height: 40px;
     position: absolute;
-    opacity: 0;  
+    opacity: 0 ;
     z-index: 999;
     font-size: 24px;
     cursor: pointer;
-    color:#e6e6e6;
+    color: #e6e6e6;
     top: 45%;
-    left:45%;
+    left: 45%;
   }
 
   .heart{
@@ -183,8 +188,9 @@
 
   .share{
     transform: translate(25px, 10px);
-    color:#e6e6e6;
+    color: #e6e6e6;
   }
+
   .material-symbols-outlined {
     font-weight: 700;
   }
@@ -192,12 +198,15 @@
   .fa.share:hover{
     color: #ff6b6b;
   }
+
 }
+
 footer {
-    background-color: #fff;
-    padding: 30px 47px 50px 47px; 
-    a {
-      color: #ff6b6b;
-    }  
+  background-color: #fff;
+  padding: 30px 47px 50px 47px ;
+
+  a {
+    color: #ff6b6b;
+  }  
 }
 
