@@ -120,11 +120,31 @@ const app = {
     thisApp.initCart();
     thisApp.initPages();
     thisApp.initBooking();
+    thisApp.initHome();
   },
   initBooking: function () {
     const thisApp = this;
     const bookingElement = document.querySelector(select.containerOf.booking);
     thisApp.booking = new Booking(bookingElement);
+  },
+  initHome: function () {
+    const thisApp = this;
+
+    thisApp.navHomeLinks = document.querySelector('.home-nav');
+
+    thisApp.navHomeLinks.addEventListener('click', function (event) {
+      event.preventDefault();
+
+      const clickedLink = event.target;
+      console.log(clickedLink.classList);
+      if (clickedLink.classList.contains('go_to_order')) {
+        thisApp.activatePage('order');
+      }
+
+      if (clickedLink.classList.contains('goToBooking')) {
+        thisApp.activatePage('booking');
+      }
+    });
   },
 };
 
