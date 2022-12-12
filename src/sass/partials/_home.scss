@@ -48,12 +48,12 @@
     width: 100%;
     text-align: center;
     top: 40%;  
+    transition: top 0.6s;
   }
 }
 
 .img_link:hover h2{
-  top: 30%;
-  transition: 0.6s;  
+  top: 30%;  
 }
 
 .opening_hours{
@@ -157,11 +157,12 @@
     height: 100%;
     object-fit: cover;
     border-radius: 3px;
+    transition: filter .8s;
   }
 
   .img_wrap:hover img{
     filter: brightness(0.6);
-    transition: 0.6s;
+    //transition: 0.6s;
   }
 
   .fa{
@@ -179,7 +180,7 @@
 
   .heart{
     transform: translate(-25px, 10px);
-    //color:#e6e6e6;
+    transition: color .3s;
   }
 
   .fa.heart:hover{
@@ -189,6 +190,7 @@
   .share{
     transform: translate(25px, 10px);
     color: #e6e6e6;
+    transition: color .3s;
   }
 
   .material-symbols-outlined {
